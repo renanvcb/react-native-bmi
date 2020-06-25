@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ReactNativeImc",
-    "slug": "ReactNativeImc",
+    "name": "BMI Calc",
+    "slug": "bmi-calc",
     "platforms": [
       "ios",
       "android",
