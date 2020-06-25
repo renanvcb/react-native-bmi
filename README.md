@@ -4,9 +4,9 @@ A body mass index calculator made with react native.
 
 ## Screenshots
 ### Android:
-<img src="assets/screenshots/Android01.png" height="360">
-<img src="assets/screenshots/Android02.png" height="360">
-<img src="assets/screenshots/Android03.png" height="360">
+<img src="assets/screenshots/Android01.png" height="320">
+<img src="assets/screenshots/Android02.png" height="320">
+<img src="assets/screenshots/Android03.png" height="320">
 
 ### iOS
 <img src="assets/screenshots/iOS01.png" height="320">
