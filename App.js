@@ -5,10 +5,9 @@ import Constants from 'expo-constants';
 
 export default function App() {
   const [massa, setMassa] = useState(0)
-  const [altura, setAltura] = useState(0)
+  const [altura, setAltura] = useState('')
   const [result, setResult] = useState(0)
   const [resultText, setResultText] = useState('')
-  const [teste, setTeste] = useState('')
 
   function calcular() {
     const result = massa / (Math.pow(altura, 2))
@@ -37,9 +36,33 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.inputs} >
-        {/* Preciso volocar um keyboard type pra cada OS */}
-        <TextInput placeholder="Massa" keyboardType="decimal-pad" style={styles.input} onChangeText={(massa) => setMassa(massa)} />
-        <TextInput placeholder="Altura" keyboardType="decimal-pad" style={styles.input} onChangeText={(altura) => setAltura(altura)} />
+        <TextInput
+          placeholder="Massa"
+          placeholderTextColor={'gray'}
+          keyboardType="numeric"
+          returnKeyType="done"
+          style={styles.input}
+          onChangeText={(massa) => setMassa(massa)}
+        />
+        {/* <TextInput placeholder="Altura" keyboardType="decimal-pad" style={styles.input} onChangeText={(altura) => setAltura(altura)} /> */}
+        {/* Veirificar o campo abaixo */}
+        <TextInputMask
+          placeholder="Altura"
+          placeholderTextColor={'gray'}
+          keyboardType="numeric"
+          returnKeyType="done"
+          style={styles.input}
+          type={'money'}
+          options={{
+            precision: 2,
+            separator: '.',
+            delimiter: '.',
+            unit: '',
+            suffixUnit: ''
+          }}
+          value={altura}
+          onChangeText={(altura) => {setAltura(altura)}}
+        />
       </View>
       <TouchableOpacity onPress={calcular} style={styles.button} activeOpacity={0.6}>
         <Text style={styles.buttonText}>Calcular</Text>
@@ -66,6 +89,7 @@ const styles = StyleSheet.create({
     width: '50%',
     textAlign: 'center',
     fontSize: 50,
+    color: 'gray'
   },
   button: {
     backgroundColor: '#89ffa5',
@@ -76,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 30,
     alignSelf: 'center',
     fontSize: 25,
-    color: '#6fd4b5',
+    color: '#3f94b5',
     fontWeight: 'bold'
   },
   result: {
