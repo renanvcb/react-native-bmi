@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView, TouchableOpacity, Platform } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import Constants from 'expo-constants';
 
@@ -34,7 +34,10 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <View style={styles.inputs} >
         <TextInput
           placeholder="Massa"
@@ -44,8 +47,6 @@ export default function App() {
           style={styles.input}
           onChangeText={(massa) => setMassa(massa)}
         />
-        {/* <TextInput placeholder="Altura" keyboardType="decimal-pad" style={styles.input} onChangeText={(altura) => setAltura(altura)} /> */}
-        {/* Veirificar o campo abaixo */}
         <TextInputMask
           placeholder="Altura"
           placeholderTextColor={'gray'}
@@ -69,7 +70,7 @@ export default function App() {
       </TouchableOpacity>
       <Text style={styles.result}>{result.toFixed(2)}</Text>
       <Text style={[styles.result, { fontSize: 35 }]}>{resultText}</Text>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
